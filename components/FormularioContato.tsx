@@ -33,14 +33,14 @@ export default function FormularioContato() {
   };
 
   return (
-    <section id="contato" className="py-20 lg:py-32 bg-dark relative overflow-hidden">
+    <section id="contato" className="min-h-[85vh] flex items-center bg-dark relative overflow-hidden py-8 lg:py-12">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 topographic-pattern"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+      <div className="relative z-10 container mx-auto px-4 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Panel - Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -49,20 +49,18 @@ export default function FormularioContato() {
             transition={{ duration: 0.6 }}
             className="text-white"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 uppercase">
-              Saiba Mais Sobre
-              <br />
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 uppercase">
               Serviços Geoespaciais Gerenciados™
             </h2>
-            <div className="w-24 h-1 bg-orange mb-6"></div>
-            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+            <div className="w-24 h-1 bg-orange mb-4"></div>
+            <p className="text-base md:text-lg text-white/90 mb-6 leading-relaxed">
               Acelere sua fase de descoberta com dados geoespaciais abrangentes
               para tomar decisões de negócios informadas e acelerar o
               desenvolvimento de infraestrutura planejada. Explore como nossos
               Serviços Geoespaciais Gerenciados™ podem abordar todo o ciclo de
               vida de seus ativos.
             </p>
-            <div className="space-y-4 text-white/80">
+            <div className="space-y-2 text-white/80 text-sm md:text-base">
               <p>
                 <strong className="text-white">Endereço:</strong> Av. Bezerra de
                 Menezes, 1200, Parque Araxá, Fortaleza - CE, CEP 60123-456
@@ -87,14 +85,14 @@ export default function FormularioContato() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-lg p-8 lg:p-10"
+            className="bg-white rounded-lg p-6 lg:p-8 max-h-[85vh] overflow-y-auto"
           >
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+            <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+              <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
                 <div>
                   <label
                     htmlFor="firstName"
-                    className="block text-dark font-medium mb-2"
+                    className="block text-dark font-medium mb-1 text-sm"
                   >
                     Nome <span className="text-red-500">*</span>
                   </label>
@@ -105,13 +103,13 @@ export default function FormularioContato() {
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                    className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="lastName"
-                    className="block text-dark font-medium mb-2"
+                    className="block text-dark font-medium mb-1 text-sm"
                   >
                     Sobrenome <span className="text-red-500">*</span>
                   </label>
@@ -122,16 +120,16 @@ export default function FormularioContato() {
                     required
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                    className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                   />
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+              <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-dark font-medium mb-2"
+                    className="block text-dark font-medium mb-1 text-sm"
                   >
                     E-mail <span className="text-red-500">*</span>
                   </label>
@@ -142,13 +140,13 @@ export default function FormularioContato() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                    className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-dark font-medium mb-2"
+                    className="block text-dark font-medium mb-1 text-sm"
                   >
                     Telefone <span className="text-red-500">*</span>
                   </label>
@@ -159,7 +157,7 @@ export default function FormularioContato() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                    className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                   />
                 </div>
               </div>
@@ -167,7 +165,7 @@ export default function FormularioContato() {
               <div>
                 <label
                   htmlFor="company"
-                  className="block text-dark font-medium mb-2"
+                  className="block text-dark font-medium mb-1 text-sm"
                 >
                   Nome da Empresa
                 </label>
@@ -177,15 +175,15 @@ export default function FormularioContato() {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                  className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                 />
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+              <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
                 <div>
                   <label
                     htmlFor="city"
-                    className="block text-dark font-medium mb-2"
+                    className="block text-dark font-medium mb-1 text-sm"
                   >
                     Cidade <span className="text-red-500">*</span>
                   </label>
@@ -196,13 +194,13 @@ export default function FormularioContato() {
                     required
                     value={formData.city}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                    className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="state"
-                    className="block text-dark font-medium mb-2"
+                    className="block text-dark font-medium mb-1 text-sm"
                   >
                     Estado/Região <span className="text-red-500">*</span>
                   </label>
@@ -213,7 +211,7 @@ export default function FormularioContato() {
                     required
                     value={formData.state}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                    className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                   />
                 </div>
               </div>
@@ -221,7 +219,7 @@ export default function FormularioContato() {
               <div>
                 <label
                   htmlFor="projectLocation"
-                  className="block text-dark font-medium mb-2"
+                  className="block text-dark font-medium mb-1 text-sm"
                 >
                   Localização do Projeto <span className="text-red-500">*</span>
                 </label>
@@ -232,60 +230,31 @@ export default function FormularioContato() {
                   required
                   value={formData.projectLocation}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
+                  className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-dark font-medium mb-2"
+                  className="block text-dark font-medium mb-1 text-sm"
                 >
                   Mensagem
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
+                  rows={3}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all resize-none"
+                  className="w-full px-3 py-2 text-sm border-2 border-blue/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all resize-none"
                 />
-              </div>
-
-              {/* reCAPTCHA Mock */}
-              <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg border border-gray-25">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-blue rounded flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-dark">
-                      Protegido por reCAPTCHA
-                    </p>
-                    <p className="text-xs text-gray-50">
-                      Privacidade - Termos
-                    </p>
-                  </div>
-                </div>
               </div>
 
               <Button
                 type="submit"
-                size="lg"
-                className="w-full uppercase tracking-wider"
+                size="sm"
+                className="w-[30%] uppercase tracking-wider"
               >
                 Enviar
               </Button>

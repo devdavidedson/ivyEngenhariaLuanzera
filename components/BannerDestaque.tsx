@@ -32,14 +32,24 @@ export default function BannerDestaque() {
   };
 
   return (
-    <section className="relative bg-dark py-16 lg:py-24 overflow-hidden">
+    <section className="relative bg-dark py-12 lg:py-20 mb-[20px] overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 topographic-pattern"></div>
       </div>
 
+      {/* Seta Esquerda - Fixa a 20px da borda esquerda da seção */}
+      <button
+        onClick={prevBanner}
+        className="absolute left-[20px] top-1/2 -translate-y-1/2 text-orange hover:text-white transition-colors p-2 z-20"
+        aria-label="Banner anterior"
+      >
+        <FiChevronLeft className="w-8 h-8" />
+      </button>
+
       <div className="relative z-10 container mx-auto px-4 lg:px-8">
         <div className="max-w-6xl mx-auto">
+          {/* Conteúdo: Título + Descrição + Botão - Animado */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -47,13 +57,13 @@ export default function BannerDestaque() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8"
+              className="flex items-center justify-center gap-6 lg:gap-8"
             >
-              <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
+              <div className="flex-1">
+                <h3 className="text-[22px] font-bold text-white mb-2">
                   {banners[currentIndex].title}
                 </h3>
-                <p className="text-lg md:text-xl text-white/90 mb-6">
+                <p className="text-[18px] text-white/90">
                   {banners[currentIndex].subtitle}
                 </p>
               </div>
@@ -64,40 +74,17 @@ export default function BannerDestaque() {
               </div>
             </motion.div>
           </AnimatePresence>
-
-          {/* Navigation Arrows */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={prevBanner}
-              className="text-orange hover:text-white transition-colors p-2"
-              aria-label="Banner anterior"
-            >
-              <FiChevronLeft className="w-8 h-8" />
-            </button>
-            <div className="flex gap-2">
-              {banners.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex
-                      ? "bg-orange w-8"
-                      : "bg-white/30 hover:bg-white/50"
-                  }`}
-                  aria-label={`Ir para banner ${index + 1}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={nextBanner}
-              className="text-orange hover:text-white transition-colors p-2"
-              aria-label="Próximo banner"
-            >
-              <FiChevronRight className="w-8 h-8" />
-            </button>
-          </div>
         </div>
       </div>
+
+      {/* Seta Direita - Fixa a 20px da borda direita da seção */}
+      <button
+        onClick={nextBanner}
+        className="absolute right-[20px] top-1/2 -translate-y-1/2 text-orange hover:text-white transition-colors p-2 z-20"
+        aria-label="Próximo banner"
+      >
+        <FiChevronRight className="w-8 h-8" />
+      </button>
     </section>
   );
 }
