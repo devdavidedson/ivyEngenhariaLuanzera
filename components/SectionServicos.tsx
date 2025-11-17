@@ -9,7 +9,15 @@ const servicos: Servico[] = [
     title: "Mapeamento e Coleta de Dados",
     description:
       "Aproveite a expertise geoespacial da Ivy para aprimorar a precisão dos dados e resultados de projetos com tecnologias de mapeamento e levantamento de última geração.",
+    services: [
+      "Levantamentos Topográficos",
+      "Mapeamento Aéreo",
+      "GIS",
+      "Varredura a Laser BIM/3D",
+      "Monitoramento de Obras e Construção",
+    ],
     backgroundType: "topographic",
+    hoverImage: "/image/card-1.jpeg",
   },
   {
     id: "2",
@@ -24,33 +32,47 @@ const servicos: Servico[] = [
       "Soluções FAC-008",
     ],
     backgroundType: "orange",
+    hoverImage: "/image/card-2.jpeg",
   },
   {
     id: "3",
     title: "Soluções Digitais e de Dados",
     description:
       "Estenda suas capacidades estratégicas com os dados geoespaciais precisos da Ivy e soluções empresariais integradas, impulsionando a inovação em cada projeto.",
+    services: [
+      "Estratégia e Arquitetura de Gestão",
+      "Business Intelligence e Analytics",
+      "Integração de Sistemas e Dados",
+      "Consultoria de Negócios e Tecnologia",
+      "Consultoria GIS Estratégica",
+    ],
     backgroundType: "blue",
+    hoverImage: "/image/card-3.jpeg",
   },
   {
     id: "4",
     title: "Localização de Utilidades",
     description:
       "Minimize riscos e descubra dados críticos de infraestrutura com a engenharia de utilidades subterrâneas precisa da Ivy.",
+    services: [
+      "Engenharia de Utilidades Subterrâneas (SUE)",
+      "Coordenação de Utilidades",
+    ],
     backgroundType: "technical",
+    hoverImage: "/image/card-4.jpeg",
   },
 ];
 
 const getBackgroundClass = (type: string) => {
   switch (type) {
     case "topographic":
-      return "bg-gradient-to-br from-dark via-dark to-blue/20 relative overflow-hidden";
+      return "bg-[#042742] relative overflow-hidden";
     case "orange":
-      return "bg-gradient-to-br from-orange via-orange/80 to-yellow-500 relative overflow-hidden";
+      return "bg-[#064c7a] relative overflow-hidden";
     case "blue":
-      return "bg-gradient-to-br from-dark via-blue to-blue/50 relative overflow-hidden";
+      return "bg-[#064c7a] relative overflow-hidden";
     case "technical":
-      return "bg-gradient-to-br from-dark via-blue/30 to-dark relative overflow-hidden";
+      return "bg-[#064c7a] relative overflow-hidden";
     default:
       return "bg-dark";
   }
@@ -58,7 +80,7 @@ const getBackgroundClass = (type: string) => {
 
 export default function SectionServicos() {
   return (
-    <section className="py-20 lg:py-32 bg-white">
+    <section className="pt-10 pb-20 lg:pt-16 lg:pb-32 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -73,7 +95,7 @@ export default function SectionServicos() {
           <div className="w-24 h-1 bg-orange"></div>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {servicos.map((servico, index) => (
             <motion.div
               key={servico.id}
@@ -83,70 +105,60 @@ export default function SectionServicos() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`${getBackgroundClass(
                 servico.backgroundType
-              )} rounded-lg p-4 md:p-6 text-white min-h-[350px] md:min-h-[400px] flex flex-col hover:scale-[1.02] md:hover:scale-105 transition-transform duration-300`}
+              )} group p-4 md:p-6 text-white min-h-[400px] md:min-h-[460px] flex flex-col hover:scale-[1.02] md:hover:scale-105 transition-transform duration-300 overflow-hidden`}
             >
-              {/* Decorative line */}
-              <div className="w-12 h-0.5 bg-white/50 mb-4"></div>
+              {/* Fundo base com bgc-2 */}
+              <div
+                className="absolute inset-0 bg-cover bg-center z-0"
+                style={{ backgroundImage: "url(/image/bgc-2.jpeg)" }}
+              />
 
-              <h3 className="text-xl md:text-2xl font-bold mb-4">
-                {servico.title}
-              </h3>
-              <p className="text-white/90 mb-4 flex-grow text-sm leading-relaxed">
-                {servico.description}
-              </p>
-
-              {servico.services && (
-                <ul className="space-y-2 mt-auto">
-                  {servico.services.map((service, idx) => (
-                    <li
-                      key={idx}
-                      className="text-white/80 text-sm flex items-start"
-                    >
-                      <span className="mr-2">•</span>
-                      {service}
-                    </li>
-                  ))}
-                </ul>
+              {/* Fundo em hover com imagem específica do card */}
+              {servico.hoverImage && (
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+                  style={{ backgroundImage: `url(${servico.hoverImage})` }}
+                />
               )}
 
-              {/* Background patterns */}
+              {/* Overlay escuro para deixar o fundo mais fosco */}
+              <div className="absolute inset-0 bg-dark/80 group-hover:bg-dark/60 transition-colors duration-500 pointer-events-none z-[1]" />
+
+              {/* Padrões de fundo (acima do overlay e abaixo do conteúdo) */}
               {servico.backgroundType === "topographic" && (
-                <div className="absolute inset-0 topographic-pattern opacity-10"></div>
+                <div className="absolute inset-0 topographic-pattern opacity-10 pointer-events-none z-[2]"></div>
               )}
               {servico.backgroundType === "blue" && (
-                <div className="absolute bottom-0 right-0 w-32 h-32 opacity-20">
-                  <svg viewBox="0 0 100 100" className="w-full h-full">
-                    <circle cx="20" cy="20" r="2" fill="white" />
-                    <circle cx="40" cy="30" r="2" fill="white" />
-                    <circle cx="60" cy="20" r="2" fill="white" />
-                    <circle cx="80" cy="40" r="2" fill="white" />
-                    <line
-                      x1="20"
-                      y1="20"
-                      x2="40"
-                      y2="30"
-                      stroke="white"
-                      strokeWidth="0.5"
-                    />
-                    <line
-                      x1="40"
-                      y1="30"
-                      x2="60"
-                      y2="20"
-                      stroke="white"
-                      strokeWidth="0.5"
-                    />
-                    <line
-                      x1="60"
-                      y1="20"
-                      x2="80"
-                      y2="40"
-                      stroke="white"
-                      strokeWidth="0.5"
-                    />
-                  </svg>
-                </div>
+                <div className="absolute inset-0 topographic-pattern opacity-5 pointer-events-none z-[2]"></div>
               )}
+              {servico.backgroundType === "technical" && (
+                <div className="absolute inset-0 topographic-pattern opacity-5 pointer-events-none z-[2]"></div>
+              )}
+
+              {/* Conteúdo */}
+              <div className="relative z-[3] flex flex-col h-full">
+                {/* Decorative line */}
+                <div className="w-12 h-0.5 bg-white mb-4"></div>
+
+                <h3 className="text-xl md:text-2xl font-bold mb-4">
+                  {servico.title}
+                </h3>
+                <p className="text-white/90 mb-4 flex-grow text-sm leading-relaxed">
+                  {servico.description}
+                </p>
+
+                {/* Lista de serviços - aparece suavemente no hover */}
+                {servico.services && (
+                  <ul className="mt-2 space-y-2 text-sm text-white/90 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    {servico.services.map((service, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{service}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>

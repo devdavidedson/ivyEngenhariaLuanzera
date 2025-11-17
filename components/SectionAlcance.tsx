@@ -38,7 +38,7 @@ export default function SectionAlcance() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-[60vh] flex items-center bg-gradient-to-b from-dark via-dark to-black relative overflow-x-hidden py-8 lg:py-12"
+      className="min-h-[60vh] max-h-[85vh] flex items-center bg-gradient-to-b from-dark via-dark to-black relative overflow-hidden py-8 lg:py-12"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -48,7 +48,7 @@ export default function SectionAlcance() {
       <div className="relative z-10 w-full flex gap-[10px]">
         {/* Left Panel - Text - 30% */}
         <div
-          className={`w-[30vw] text-white px-8 lg:px-12 flex flex-col justify-center transition-none ${
+          className={`w-[30vw] text-white px-8 lg:px-12 flex flex-col justify-center items-center text-center transition-none ${
             isVisible ? "slide-left" : "opacity-0 -translate-x-[200px]"
           }`}
         >
@@ -73,7 +73,7 @@ export default function SectionAlcance() {
 
         {/* Right Panel - GIF - 70% */}
         <div
-          className={`w-[70vw] relative px-6 lg:px-8 flex items-center justify-center transition-none ${
+          className={`w-[70vw] h-full relative flex items-center justify-center transition-none overflow-hidden ${
             isVisible ? "slide-right" : "opacity-0 translate-x-[200px]"
           }`}
         >
@@ -82,7 +82,7 @@ export default function SectionAlcance() {
             alt="Serviços Ivy Engenharia Geoespacial"
             width={800}
             height={600}
-            className="w-full h-auto object-contain"
+            className="w-full h-full max-h-[85vh] object-cover"
             unoptimized
           />
         </div>
